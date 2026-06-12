@@ -1,1 +1,11 @@
-.env
+
+*/
+
+!common/
+!common/**/*
+
+!server/
+!server/**/*
+
+!types/
+!types/**/*

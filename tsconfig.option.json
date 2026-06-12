@@ -1,0 +1,25 @@
+// tsconfig.option.json（放在项目根目录）
+{
+    "extends": "@tsconfig/node24/tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.server.tsbuildinfo",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "allowJs": true,
+        "checkJs": true,
+        "noEmit": true, // 如果你想生产构建时输出 JS，可保持 false
+        "strict": true
+    },
+    "include": [
+        "env.d.ts", // ← 关键：包含根目录的 env.d.ts，它会自动引入 vite/client 类型，解决 import.meta.env 报错
+        "types/**/*.d.ts",
+        "./*.ts",
+        "./*.js",
+        "plugins/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+    ],
+    "references": []
+}
