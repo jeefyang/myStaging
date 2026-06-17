@@ -103,7 +103,7 @@ async function main() {
         }
         // 目录存在就不创建了vue了
         if (fs.existsSync(projectDir)) {
-            warn(`Directory "${projectName}" already exists.`);
+            warn(`项目目录 "${projectName}" 已经存在.`);
             return 1
         }
     }

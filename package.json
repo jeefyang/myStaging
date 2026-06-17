@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "express_vue3": "node ./express_vue3.mjs"
+        "express_vue3": "node ./express_vue3.mjs",
+        "fnpack_init": "node ./fnpack_init.mjs"
     },
     "author": "",
     "license": "ISC",

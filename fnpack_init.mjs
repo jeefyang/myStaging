@@ -101,29 +101,31 @@ async function main() {
             error('项目目录不能为空');
             process.exit(1);
         }
-        // 目录存在就不创建了vue了
-        if (fs.existsSync(projectDir)) {
-            warn(`Directory "${projectName}" already exists.`);
-            return 1
+        // 目录不存在就报错
+        if (!fs.existsSync(projectDir)) {
+            error(`项目目录 "${projectName}" 不存在.`);
+            proocess.exit(1)
         }
     }
 
+    const run_fnpackCreate = async () => {
+        log(`正在初始化项目...`);
+        fs.copyFileSync("./fnpack.exe", path.join(projectDir, "fnpack.exe"))
+        success("克隆 fnpack.exe 成功")
+        run(`fnpack.exe create fnnas.${projectName}`, { cwd: projectDir })
+        success("fnpack创建 `fnnas.${projectName}` 成功")
+    }
 
 
-
-    const runList = [run_projectName, run_projectDist, run_projectDir ]
+    const runList = [run_projectName, run_projectDist, run_projectDir, run_fnpackCreate, run_fnpackCreate]
 
     for (let i = 0; i < runList.length; i++) {
         const c = await runList[i]() || 0
         i += c
     }
 
-    log(`项目初始化完成`)
-    log(`cd ${projectDist}${projectName}`)
-    log(`pnpm install`)
-    log(`or`)
-    log(`pnpm install --ignore-workspace`)
-    process.exit(1);
+
+    process.exit(0);
 }
 
 main().catch((err) => {
