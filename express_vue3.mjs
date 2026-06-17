@@ -129,7 +129,7 @@ async function main() {
         if (!pkg.dependencies) {
             pkg.dependencies = {}
         }
-        const add_dependencies = ['@tsconfig/node24', 'express', 'node', "vite", "cors"]
+        const add_dependencies = ['@tsconfig/node24', 'express', 'node', "vite", "cors", 'helmet']
         for (let i = 0; i < add_dependencies.length; i++) {
             const key = add_dependencies[i];
             // 存在就跳过
