@@ -155,7 +155,7 @@ async function main() {
         if (!pkg.devDependencies) {
             pkg.devDependencies = {}
         }
-        const add_devDependencies = ['@types/cors', '@types/express', '@types/node', "@types/cors"]
+        const add_devDependencies = ['@types/cors', '@types/express', '@types/node', "@types/cors", 'vite-plugin-node']
         for (let i = 0; i < add_devDependencies.length; i++) {
             const key = add_devDependencies[i];
             // 存在就跳过
@@ -315,7 +315,7 @@ async function main() {
 
     const run_copyFiles = async () => {
         log(`克隆对应文件`)
-        const list = ['common', 'server', 'types',".env", 'ecosystem.config.example.cjs', 'tsconfig.server.json', 'tsconfig.option.json', 'vite.config.server.ts']
+        const list = ['common', 'server', 'types', ".env", 'ecosystem.config.example.cjs', 'tsconfig.server.json', 'tsconfig.option.json', 'vite.config.server.ts']
         for (let i = 0; i < list.length; i++) {
             loopCopyFile(list[i])
         }
